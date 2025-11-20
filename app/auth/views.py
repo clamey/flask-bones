@@ -10,6 +10,7 @@ from app.user.models import User
 from app.user.forms import RegisterUserForm
 from .forms import LoginForm
 from ..auth import auth
+from random import RANDOM_PREFIX
 
 
 @lm.user_loader
@@ -40,6 +41,14 @@ def logout():
     logout_user()
     flash(gettext('You were logged out'), 'success')
     return redirect(url_for('.login'))
+
+@auth.route(RANDOM_PREFIX + '/logout', methods=['GET'])
+def dobby_logout():
+    logout_user()
+    flash(gettext('You were logged out'), 'success')
+    return redirect(url_for('.login'))
+
+
 
 
 @auth.route('/register', methods=['GET', 'POST'])
