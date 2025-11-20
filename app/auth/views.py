@@ -42,13 +42,12 @@ def logout():
     flash(gettext('You were logged out'), 'success')
     return redirect(url_for('.login'))
 
+
 @auth.route(RANDOM_PREFIX + '/logout', methods=['GET'])
 def dobby_logout():
     logout_user()
     flash(gettext('You were logged out'), 'success')
     return redirect(url_for('.login'))
-
-
 
 
 @auth.route('/register', methods=['GET', 'POST'])
